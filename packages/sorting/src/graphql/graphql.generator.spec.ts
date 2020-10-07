@@ -84,7 +84,7 @@ describe('GQLSortingGenerator', () => {
       })
       const OrderingValue = generator.generateForType(EntityA, ResolverA.prototype, "query")
 
-      const schema = await buildSchema({ resolvers: [AbstractResolver], skipCheck: true })
+      const schema = await buildSchema({ resolvers: [AbstractResolver], orphanedTypes: [OrderingValue], skipCheck: true })
       const test: GraphQLEnumTypeConfig = schema.getType('EntityASortableFields')!.toConfig() as any
 
       expect(test).toBeTruthy()
